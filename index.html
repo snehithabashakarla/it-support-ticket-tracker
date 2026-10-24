@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f5f7">
+  <title>Helpdesk | IT Support</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Helpdesk home">
+        <span class="brand-mark" aria-hidden="true">H</span>
+        <span>helpdesk<span class="brand-period">.</span></span>
+      </a>
+      <div class="topbar-note">
+        <span class="online-dot" aria-hidden="true"></span>
+        IT support workspace
+      </div>
+    </header>
+
+    <main>
+      <section class="welcome" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">SUPPORT OVERVIEW</p>
+          <h1 id="page-title">Good day, team <span aria-hidden="true">✳</span></h1>
+          <p class="welcome-copy">Keep requests moving. Your team's support queue is right here.</p>
+        </div>
+        <div class="date-chip">
+          <span class="date-icon" aria-hidden="true">◷</span>
+          Internal helpdesk
+        </div>
+      </section>
+
+      <section class="status-overview" aria-label="Ticket status overview">
+        <article class="stat-card stat-open">
+          <div class="stat-heading"><span class="stat-dot" aria-hidden="true"></span>Open</div>
+          <p class="stat-value" id="count-open">0</p>
+          <p class="stat-caption">Waiting for support</p>
+        </article>
+        <article class="stat-card stat-progress">
+          <div class="stat-heading"><span class="stat-dot" aria-hidden="true"></span>In progress</div>
+          <p class="stat-value" id="count-progress">0</p>
+          <p class="stat-caption">Being worked on</p>
+        </article>
+        <article class="stat-card stat-resolved">
+          <div class="stat-heading"><span class="stat-dot" aria-hidden="true"></span>Resolved</div>
+          <p class="stat-value" id="count-resolved">0</p>
+          <p class="stat-caption">All taken care of</p>
+        </article>
+      </section>
+
+      <div class="workspace">
+        <section class="panel create-panel" aria-labelledby="create-title">
+          <div class="panel-heading">
+            <div class="heading-icon" aria-hidden="true">＋</div>
+            <div>
+              <p class="eyebrow">NEW REQUEST</p>
+              <h2 id="create-title">Raise a ticket</h2>
+            </div>
+          </div>
+          <p class="panel-intro">Tell us what's going on and we'll get right on it.</p>
+
+          <form id="ticket-form">
+            <div class="field">
+              <label for="title">Ticket title <span class="required-mark">*</span></label>
+              <input id="title" name="title" type="text" maxlength="120" placeholder="e.g. Can't connect to Wi-Fi" required>
+            </div>
+            <div class="field">
+              <label for="requester">Your name <span class="required-mark">*</span></label>
+              <input id="requester" name="requester" type="text" maxlength="80" placeholder="e.g. Alex Morgan" required>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="category">Category <span class="required-mark">*</span></label>
+                <select id="category" name="category" required>
+                  <option value="" disabled selected>Select one</option>
+                  <option value="Hardware">Hardware</option>
+                  <option value="Software">Software</option>
+                  <option value="Network">Network</option>
+                  <option value="Account access">Account access</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="priority">Priority <span class="required-mark">*</span></label>
+                <select id="priority" name="priority" required>
+                  <option value="" disabled selected>Select one</option>
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="description">Description <span class="required-mark">*</span></label>
+              <textarea id="description" name="description" rows="4" maxlength="1000" placeholder="Share a few details to help us troubleshoot…" required></textarea>
+            </div>
+            <button class="primary-button" type="submit">
+              <span aria-hidden="true">＋</span>
+              Create ticket
+              <span class="button-arrow" aria-hidden="true">→</span>
+            </button>
+          </form>
+        </section>
+
+        <section class="panel tickets-panel" aria-labelledby="tickets-title">
+          <div class="tickets-header">
+            <div>
+              <p class="eyebrow">YOUR WORKSPACE</p>
+              <h2 id="tickets-title">Support tickets <span class="ticket-total" id="ticket-total">0</span></h2>
+            </div>
+            <label class="search-box" for="ticket-search">
+              <span aria-hidden="true">⌕</span>
+              <input id="ticket-search" type="search" placeholder="Search tickets…" autocomplete="off">
+              <span class="sr-only">Search by title or requester</span>
+            </label>
+          </div>
+          <p class="section-hint">Stay on top of every request, from start to finish.</p>
+
+          <div id="ticket-list" class="ticket-list" aria-live="polite" aria-relevant="additions removals text"></div>
+          <div id="empty-state" class="empty-state">
+            <div class="empty-illustration" aria-hidden="true">
+              <span class="empty-spark empty-spark-one">✳</span>
+              <span class="empty-paper"><span></span><span></span><span></span></span>
+              <span class="empty-spark empty-spark-two">✦</span>
+            </div>
+            <h3 id="empty-title">It's quiet in here</h3>
+            <p id="empty-copy">No tickets yet. Create a request to get the conversation started.</p>
+          </div>
+          <p id="app-message" class="sr-only" role="status" aria-live="polite"></p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <span>Made for smoother workdays <span aria-hidden="true">✳</span></span>
+      <span>Internal IT support</span>
+    </footer>
+  </div>
+</body>
+</html>
